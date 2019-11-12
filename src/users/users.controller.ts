@@ -1,6 +1,6 @@
-import {Controller, Get, Post, HttpCode, Header, Redirect, Query, Param, Body, Put, Delete, Req, GatewayTimeoutException} from '@nestjs/common';
+import {Controller, Get, Post, HttpCode, Header, Redirect, Query, Param, Body, Patch,Put, Delete, Req, GatewayTimeoutException} from '@nestjs/common';
 import { CreateUserDto /*UpdateUserDto, ListAllEntities*/ } from './dto/create-user.dto';
-import { identifier } from '@babel/types';
+import { identifier, updateExpression } from '@babel/types';
 import { UsersService } from './users.service';
 
 
@@ -32,6 +32,22 @@ export class UserController {
     return this.usersService.getOneUser(userId);
   }
 
+  @Patch(':id')
+  updateUser(
+    @Param('id') userId: string,
+    @Body('name') name: string,
+    @Body('firstName') firstName: string,
+    @Body('age') age: number,
+    ) {
+      this.usersService.updateUser(userId, name, firstName, age);
+      return ('User is updated!');
+  }
+
+  @Delete(':id')
+  deleteUser(@Param('id') userId: string) {
+    this.usersService.deleteUser(userId);
+    return ('User is deleted!');
+  }
 }
 
 
