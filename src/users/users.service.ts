@@ -1,10 +1,11 @@
 import { Injectable, Param, NotFoundException } from '@nestjs/common';
 
 import { User } from './users.model'; 
+// import { User } from './interfaces/user.interface';
 
 @Injectable()
 export class UsersService {
-  private users: User[] = [];
+  private users: User[] = [˚];
 
   insertUser(name: string, firstName: string, age: number) {
     const userId = Math.random().toString();
