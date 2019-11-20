@@ -5,9 +5,11 @@ import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/users.module';
+import { ConfigModule } from 'config/configModule';
 
 @Module({
   imports: [
+    ConfigModule,
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         "type": "mysql",
