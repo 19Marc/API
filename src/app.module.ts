@@ -8,7 +8,17 @@ import { UserModule } from './users/users.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        "type": "mysql",
+        "host": "localhost",
+        "username": "root",
+        "password": "password",
+        "database": "lineup",
+        "entities": [ __dirname + "/**/*.entity{.ts,.js}"],
+        "synchronize": true
+      }),
+    }),
     UserModule,
   ],
   controllers: [AppController],

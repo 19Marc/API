@@ -4,6 +4,6 @@
   "username": "root",
   "password": "password",
   "database": "lineup",
-  "entities": ["src/**/*.entity{.ts,.js}"],
+  "entities": ["/**/*.entity{.ts,.js}"],
   "synchronize": true
 }
