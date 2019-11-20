@@ -5,7 +5,7 @@ import { User } from './users.model';
 
 @Injectable()
 export class UsersService {
-  private users: User[] = [˚];
+  private users: User[] = [];
 
   insertUser(name: string, firstName: string, age: number) {
     const userId = Math.random().toString();

@@ -4,6 +4,6 @@ import {NestExpressApplication} from '@nestjs/platform-express'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await app.listen(3306);
 }
 bootstrap();
