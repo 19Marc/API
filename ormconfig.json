@@ -4,6 +4,8 @@
   "username": "root",
   "password": "password",
   "database": "lineup",
-  "entities": ["/**/*.entity{.ts,.js}"],
-  "synchronize": true
+  "port": 3306,
+  "entities": ["src/**/*.entity{.ts.js}", "dist/**/*.entity{.ts.js}"],
+  "synchronize": true,
+  "logging": true
 }
