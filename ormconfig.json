@@ -5,7 +5,10 @@
   "password": "password",
   "database": "lineup",
   "port": 3306,
-  "entities": ["./src/**/**/*.entity.ts", "./dist/**/**/*.entity.ts"],
+  "entities": [
+    "dist/**/**/*.entity{.ts,.js}",
+    "src/**/**/*.entity{.ts,.js}"
+  ],
   "synchronize": true,
   "logging": true
 }
