@@ -4,13 +4,13 @@ import { Repository } from 'typeorm';
 import { User } from './entity/user.entity';
 
 @Injectable()
-export class UserService {
+export class UsersService {
   constructor(
     @InjectRepository(User)
-    private readonly photoRepository: Repository<User>,
+    private readonly userRepository: Repository<User>,
   ) {}
 
   findAll(): Promise<User[]> {
-    return this.photoRepository.find();
+    return this.userRepository.find();
   }
 }
