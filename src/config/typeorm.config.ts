@@ -1,14 +1,29 @@
-import {TypeOrmModuleOptions} from '@nestjs/typeorm';
+import {Injectable} from "@nestjs/common";
+import {TypeOrmModuleOptions, TypeOrmOptionsFactory} from "@nestjs/typeorm";
 var path = require('path');
+import {ConfigService} from "./config.service";
 
-export const typeOrmConfig: TypeOrmModuleOptions = {
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: "root",
-    password: "password",
-    database: "lineup",
-    entities: [ path.join(__dirname, '../') + '**/*.entity.js' ],
-    synchronize: true,
-    logging: true,
+@Injectable()
+export class TypeOrmConfigService implements TypeOrmOptionsFactory {
+  constructor(private readonly config: ConfigService) {
+  }
+
+  createTypeOrmOptions(): TypeOrmModuleOptions {
+    return {
+      type: 'mysql',
+      host: this.config.get('DATABASE_HOST'),
+      port: this.getDatabasePort(),
+      username: this.config.get('DATABASE_USER'),
+      password: this.config.get('DATABASE_PASSWORD'),
+      database: this.config.get('DATABASE_NAME'),
+      entities: [path.join(__dirname, '../') + '**/*.entity.{ts,js}'],
+      synchronize: true,
+      logging: true,
+      trace: true
+    };
+  }
+
+  getDatabasePort(): number {
+    return (this.config.get('DATABASE_PORT')) ? + this.config.get('DATABASE_PORT') : 3306;
+  }
 }

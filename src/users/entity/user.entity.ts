@@ -17,6 +17,6 @@ export class UserEntity {
   @Column('int')
   views: number;
 
-  @Column()
-  isPublished: boolean;
+  // @Column()
+  // isPublished?: boolean;
 }
