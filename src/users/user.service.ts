@@ -8,7 +8,7 @@ import { UserEntity } from './entity/user.entity';
 export class UsersService extends TypeOrmCrudService<UserEntity> {
   constructor(
     @InjectRepository(UserEntity) repo,
-    // if comment out = error private readonly userRepository: Repository<UserEntity>
+    private readonly userRepository: Repository<UserEntity>
   ) {
     super(repo);
   }
