@@ -15,6 +15,7 @@ import { UsersService } from './user.service';
 			primary: true,
     },
   },
+
 })
 @Controller('users')
 export class UsersController implements CrudController<UserEntity> {
@@ -23,8 +24,4 @@ export class UsersController implements CrudController<UserEntity> {
   get base(): CrudController<UserEntity> {
     return this;
   }
-  // @Get()
-  // findAll(): string {
-  //   return 'This action returns all users';
-  // }
 }
