@@ -1,31 +1,31 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, PrimaryColumn} from "typeorm";
 import { UserEntity } from '../../users/entity/user.entity';
 
 @Entity('customer')
 export class CustomerEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn({
+    // type: 'uuid',
+    // name: 'customer_id'
+  })
+  id: number;
 
-  @Column({ length: 500 })
+  @Column()
   name: string;
 
-  @Column('text')
+  @Column()
   description: string;
 
   @Column()
   filename: string;
 
-  @Column('int')
+  @Column()
   views: number;
 
-//   @ManyToMany(type => Cloth, { cascade: true })
-//   @JoinTable({
-//     name: 'cat_use_cloth',
-//     joinColumn: { name: 'cat_id', referencedColumnName: 'id '},
-//     inverseJoinColumn: { name: 'cloth_id', referencedColumnName: 'id'},
-// })
-// users: UserEntity[];
-// }
+  // @ManyToMany(type => UserEntity)
+  // customers: CustomerEntity[];  
+  @ManyToMany(type => UserEntity, user => user.customers, {primary: true,})
+  @JoinTable({name : 'user_use_customer'})
+  users: UserEntity[];
 
   // @Column()
   // isPublished?: boolean;
