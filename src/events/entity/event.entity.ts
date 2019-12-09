@@ -11,13 +11,10 @@ export class EventEntity {
   name: string;
 
   @Column()
-  description: string;
+  startDate: string;
 
   @Column()
-  filename: string;
-
-  @Column()
-  views: number;
+  EndDate: string;
 
   @ManyToOne(type => ProjectEntity, project => project.events)
   @JoinColumn()

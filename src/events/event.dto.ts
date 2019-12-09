@@ -2,8 +2,7 @@
 export class EventDTO{
   id: string;
   name:string;
-  description:string;
-  filename: string;
-  views: number;
+  startDate:string;
+  endDate: string;
   isPublished: boolean;
 }

@@ -10,16 +10,19 @@ export class UserEntity {
   id: number;
 
   @Column()
-  name: string;
+  surname: string;
+  
+  @Column()
+  forname: string;
 
   @Column()
-  description: string;
+  mail: string;
+
+  @Column()
+  phone: number;
 
   @Column()
   filename: string;
-
-  @Column()
-  views: number;
 
   @ManyToMany(type => EventEntity, event => event.users)
   // @JoinTable({name : 'user_use_customer'})

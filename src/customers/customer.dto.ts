@@ -2,8 +2,6 @@
 export class UserDTO{
   id: string;
   name:string;
-  description:string;
-  filename: string;
-  views: number;
+  color:string;
   isPublished: boolean;
 }

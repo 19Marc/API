@@ -14,13 +14,7 @@ export class ProjectEntity {
   name: string;
 
   @Column()
-  description: string;
-
-  @Column()
-  filename: string;
-
-  @Column()
-  views: number;
+  color: string;
 
   @ManyToOne(type => CustomerEntity, customer => customer.projects)
   @JoinColumn()

@@ -13,13 +13,7 @@ export class CustomerEntity {
   name: string;
 
   @Column()
-  description: string;
-
-  @Column()
-  filename: string;
-
-  @Column()
-  views: number;
+  color: string;
 
   @OneToMany(type => ProjectEntity, project => project.customers)
   projects: ProjectEntity[];

@@ -1,9 +1,10 @@
 
 export class UserDTO{
-  id: string;
-  name:string;
-  description:string;
+  id: number;
+  surname:string;
+  forname:string;
+  mail:string;
+  phone: number;
   filename: string;
-  views: number;
   isPublished: boolean;
 }
