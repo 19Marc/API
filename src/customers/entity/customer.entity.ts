@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, PrimaryColumn} from "typeorm";
-import { UserEntity } from '../../users/entity/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany} from "typeorm";
+import { ProjectEntity } from '../../projects/entity/project.entity';
 
 @Entity('customer')
 export class CustomerEntity {
@@ -21,11 +21,8 @@ export class CustomerEntity {
   @Column()
   views: number;
 
-  // @ManyToMany(type => UserEntity)
-  // customers: CustomerEntity[];  
-  @ManyToMany(type => UserEntity, user => user.customers, {primary: true,})
-  @JoinTable({name : 'user_use_customer'})
-  users: UserEntity[];
+  @OneToMany(type => ProjectEntity, project => project.customers)
+  projects: ProjectEntity[];
 
   @Column()
   isPublished?: boolean;

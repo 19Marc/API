@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, PrimaryColumn } from 'typeorm';
-import { CustomerEntity } from '../../customers/entity/customer.entity';
+import { EventEntity } from '../../events/entity/event.entity';
 
 @Entity('user')
 export class UserEntity {
@@ -21,13 +21,9 @@ export class UserEntity {
   @Column()
   views: number;
 
-  // @ManyToMany(type => CustomerEntity)
-  //   @JoinTable({name : 'user_use_Customer'})
-  //   users: UserEntity[];
-
-  @ManyToMany(type => CustomerEntity, customer => customer.users)
+  @ManyToMany(type => EventEntity, event => event.users)
   // @JoinTable({name : 'user_use_customer'})
-  customers: CustomerEntity[];
+  events: EventEntity[];
 
   @Column()
   isPublished?: boolean;
