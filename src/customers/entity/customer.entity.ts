@@ -27,6 +27,6 @@ export class CustomerEntity {
   @JoinTable({name : 'user_use_customer'})
   users: UserEntity[];
 
-  // @Column()
-  // isPublished?: boolean;
+  @Column()
+  isPublished?: boolean;
 }
